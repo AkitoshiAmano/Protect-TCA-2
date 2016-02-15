@@ -16,6 +16,8 @@
 		AD5F4A0C1C70923F00F75FF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD5F4A0A1C70923F00F75FF3 /* LaunchScreen.storyboard */; };
 		AD5F4A171C70923F00F75FF3 /* Protect_TCA_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5F4A161C70923F00F75FF3 /* Protect_TCA_2Tests.swift */; };
 		AD5F4A221C70923F00F75FF3 /* Protect_TCA_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5F4A211C70923F00F75FF3 /* Protect_TCA_2UITests.swift */; };
+		AD5F4A301C7095F700F75FF3 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5F4A2F1C7095F700F75FF3 /* Function.swift */; };
+		AD5F4A321C70A37700F75FF3 /* GameStartedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5F4A311C70A37700F75FF3 /* GameStartedScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		AD5F4A1D1C70923F00F75FF3 /* Protect TCA 2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Protect TCA 2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5F4A211C70923F00F75FF3 /* Protect_TCA_2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protect_TCA_2UITests.swift; sourceTree = "<group>"; };
 		AD5F4A231C70923F00F75FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD5F4A2F1C7095F700F75FF3 /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		AD5F4A311C70A37700F75FF3 /* GameStartedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartedScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				AD5F49FD1C70923F00F75FF3 /* AppDelegate.swift */,
 				AD5F49FF1C70923F00F75FF3 /* GameScene.sks */,
 				AD5F4A011C70923F00F75FF3 /* GameScene.swift */,
+				AD5F4A311C70A37700F75FF3 /* GameStartedScene.swift */,
+				AD5F4A2F1C7095F700F75FF3 /* Function.swift */,
 				AD5F4A031C70923F00F75FF3 /* GameViewController.swift */,
 				AD5F4A051C70923F00F75FF3 /* Main.storyboard */,
 				AD5F4A081C70923F00F75FF3 /* Assets.xcassets */,
@@ -266,6 +272,8 @@
 				AD5F4A021C70923F00F75FF3 /* GameScene.swift in Sources */,
 				AD5F4A041C70923F00F75FF3 /* GameViewController.swift in Sources */,
 				AD5F49FE1C70923F00F75FF3 /* AppDelegate.swift in Sources */,
+				AD5F4A321C70A37700F75FF3 /* GameStartedScene.swift in Sources */,
+				AD5F4A301C7095F700F75FF3 /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
