@@ -15,64 +15,41 @@ let MASK_INVADER:UInt32 = 0b1000
 
 class GameStartedScene: SKScene, SKPhysicsContactDelegate {
     var TCALogo:SKSpriteNode!
-    var invader = SKSpriteNode(imageNamed: "Invader")
-    var ball = SKSpriteNode(imageNamed: "Ball")
+    var invader:SKSpriteNode!
+    var ball:SKSpriteNode!
     var background:SKSpriteNode!
-    // light, use to display object only near the logo
-    var light = SKLightNode()
-    
+    var light:SKLightNode!
     var startLabel = SKLabelNode()
     var timeLabel = SKLabelNode()
     var scoreLabel = SKLabelNode()
-    
     var startTime:NSTimeInterval!
     var presentTime:NSTimeInterval!
     var playedTime:NSTimeInterval!
-    // when last invader has been created
     var lastInvaderTime:NSTimeInterval!
-    
     var gameStarted:Bool = false
-    
     var invaderKilled:Int = 0
     var invaderOnScreen:Int = 0
-    
-    // time displayed in time label (played time)
     var displayTime:String!
     
     override func didMoveToView(view: SKView) {
-//        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-//        physicsBody?.contactTestBitMask = MASK_EDGE
-//        physicsWorld.contactDelegate = self
-        
-        background = SKSpriteNode(color: SKColor.darkGrayColor(), size: self.frame.size, position: CGPoint(x: size.width * 0.5, y: size.height * 0.5))
-        background.lightingBitMask = 1
+        background = SKSpriteNode(color: SKColor.darkGrayColor(), size: self.frame.size)
+        background.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
+        background.zPosition = 0.0
+        background.alpha = 0.5
         self.addChild(background)
         
-        light.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
-//        self.addChild(light)
+        TCALogo = SKSpriteNode(imageNamed: "Ball")
+        TCALogo.xScale = 0.1
+        TCALogo.yScale = 0.1
+        TCALogo.zPosition = 1
+        TCALogo.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
+//        self.addChild(TCALogo)
+        print(background.alpha)
+        print(TCALogo.alpha)
         
-        TCALogo = SKSpriteNode(imageNamed: "Ball", xScale: 0.1, yScale: 0.1, position: CGPoint(x: size.width * 0.5, y: size.height * 0.5))
-        TCALogo.lightingBitMask = 1
-        self.addChild(TCALogo)
-        
-        setAndAddLabelToScene(self, label: startLabel, text: "Touch to Start", fontColor: UIColor.redColor(), fontSize: 30, positionFromCentreX: 0, positionFromCentreY: 0)
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Ball")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+        let circle = SKShapeNode(circleOfRadius: 1)
+        circle.position = CGPointMake(self.size.width / 2.0, self.size.height / 2.0)
+        circle.fillColor = UIColor.redColor()
+        self.addChild(circle)
     }
 }

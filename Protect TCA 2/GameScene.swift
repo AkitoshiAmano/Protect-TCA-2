@@ -27,11 +27,8 @@ class GameScene: SKScene {
     var totalPlayedTime:Double!
     
     override func didMoveToView(view: SKView) {
-        // background color and size
         background = SKSpriteNode(color: SKColor.darkGrayColor(), size: self.frame.size)
-        // background position
         background.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
-        // add background
         self.addChild(background)
         
         // get score data
@@ -101,9 +98,5 @@ class GameScene: SKScene {
                 self.view?.presentScene(gameStartScene)
             }
         }
-    }
-   
-    override func update(currentTime: CFTimeInterval) {
-        
     }
 }

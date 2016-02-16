@@ -500,6 +500,7 @@
 				AD5F4A281C70923F00F75FF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AD5F4A291C70923F00F75FF3 /* Build configuration list for PBXNativeTarget "Protect TCA 2Tests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +509,7 @@
 				AD5F4A2B1C70923F00F75FF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AD5F4A2C1C70923F00F75FF3 /* Build configuration list for PBXNativeTarget "Protect TCA 2UITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +518,7 @@
 				AD5F4A2E1C70923F00F75FF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
