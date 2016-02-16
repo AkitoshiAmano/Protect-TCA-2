@@ -1,5 +1,5 @@
 //
-//  GameSceneViewController.swift
+//  MainViewController.swift
 //  Protect TCA 2
 //
 //  Created by 朝倉明俊 on H28/02/16.
@@ -9,19 +9,20 @@
 import UIKit
 import SpriteKit
 
-class GameSceneViewController: MainViewController {
-    var scene:GameScene!
-
+class MainViewController: UIViewController {
+    weak var skView: SKView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // hide navigation bar
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        // set game scene
-        scene = GameScene(size: skView.frame.size)
-        // move to game scene
-        skView.presentScene(scene)
+        edgesForExtendedLayout = .None
+        
+        var frame = view.bounds
+        frame.size.height -= CGRectGetHeight(navigationController!.navigationBar.frame) + CGRectGetHeight(UIApplication.sharedApplication().statusBarFrame)
+        let skView = SKView(frame: frame)
+        view.addSubview(skView)
+        self.skView = skView
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,10 +30,6 @@ class GameSceneViewController: MainViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // hide status bar
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
 
     /*
     // MARK: - Navigation
