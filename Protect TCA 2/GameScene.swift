@@ -8,9 +8,7 @@
 
 import SpriteKit
 
-var defaults = NSUserDefaults.standardUserDefaults()
-
-class GameScene: SKScene {
+class GameScene: MainScene {
     var highScoreLabel:SKLabelNode!
     var bestPlayedTimeLabel:SKLabelNode!
     var totalPlayedTimeLabel:SKLabelNode!
@@ -20,30 +18,11 @@ class GameScene: SKScene {
     var background:SKSpriteNode!
     var startLogo:SKSpriteNode!
     var startLogoMovement:SKAction!
-    var lastScore:Int!
-    var highScore:Int!
-    var lastPlayedTime:Double!
-    var bestPlayedTime:Double!
-    var totalPlayedTime:Double!
     
     override func didMoveToView(view: SKView) {
         background = SKSpriteNode(color: SKColor.darkGrayColor(), size: self.frame.size)
         background.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
         self.addChild(background)
-        
-        // get score data
-        lastScore = defaults.integerForKey("LastScore")
-        highScore = defaults.integerForKey("HighScore")
-        if lastScore > highScore {
-            highScore = lastScore
-        }
-        defaults.setObject(highScore, forKey: "HighScore")
-        
-        // get time data
-        lastPlayedTime = defaults.doubleForKey("LastTime")
-        bestPlayedTime = defaults.doubleForKey("BestTime")
-        totalPlayedTime = defaults.doubleForKey("TotalTime") + lastPlayedTime
-        defaults.setDouble(totalPlayedTime, forKey: "TotalTime")
         
         // set label
         startButton = SKLabelNode(text: "Start", fontSize: 30, fontColor: UIColor.redColor(), position: CGPoint(x: size.width * 0.5, y: size.height * 0.5))

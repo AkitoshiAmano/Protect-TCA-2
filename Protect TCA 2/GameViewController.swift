@@ -9,25 +9,59 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+var lastScore:Int! = 0
+var highScore:Int! = 0
+var lastPlayedTime:Double! = 0
+var bestPlayedTime:Double! = 0
+var totalPlayedTime:Double! = 0
+var defaults = NSUserDefaults.standardUserDefaults()
+
+class GameViewController: UITableViewController {
+    let cellReuseIdentifier = "cellReuseIdentifier"
+    let titles:Array<String> = [
+        "Start",
+        "How to play",
+        "Highest Score: ",
+        "time best: ",
+        "time total: ",
+        "Settings"
+    ]
+    let controllers:Array<UIViewController> = [GameSceneViewController()]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let scene = GameScene(fileNamed:"GameScene") {
-            // Configure the view.
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
+        
+        // get score data
+        lastScore = defaults.integerForKey("LastScore")
+        highScore = defaults.integerForKey("HighScore")
+        if lastScore > highScore {
+            highScore = lastScore
         }
+        defaults.setObject(highScore, forKey: "HighScore")
+        
+        // get time data
+        lastPlayedTime = defaults.doubleForKey("LastTime")
+        bestPlayedTime = defaults.doubleForKey("BestTime")
+        totalPlayedTime = defaults.doubleForKey("TotalTime") + lastPlayedTime
+        defaults.setDouble(totalPlayedTime, forKey: "TotalTime")
+        
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        title = "Protect TCA 2"
+
+//        if let scene = GameScene(fileNamed:"GameScene") {
+//            // Configure the view.
+//            let skView = self.view as! SKView
+//            skView.showsFPS = true
+//            skView.showsNodeCount = true
+//            
+//            /* Sprite Kit applies additional optimizations to improve rendering performance */
+//            skView.ignoresSiblingOrder = true
+//            
+//            /* Set the scale mode to scale to fit the window */
+//            scene.scaleMode = .AspectFill
+//            
+//            skView.presentScene(scene)
+//        }
     }
 
     override func shouldAutorotate() -> Bool {
@@ -49,5 +83,26 @@ class GameViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return titles.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath)
+        
+        // configure the cell
+        let title = titles[indexPath.row]
+        cell.textLabel?.text = title
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let title = titles[indexPath.row]
+        let controller = controllers[indexPath.row]
+        controller.title = title
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
