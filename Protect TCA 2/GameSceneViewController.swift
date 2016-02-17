@@ -9,6 +9,9 @@
 import UIKit
 import SpriteKit
 
+// height of navigation bar
+var navBarHeight:CGFloat!
+
 class GameSceneViewController: MainViewController {
     var scene:GameScene!
 
@@ -18,6 +21,8 @@ class GameSceneViewController: MainViewController {
         // Do any additional setup after loading the view.
         // hide navigation bar
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        // get height of navigation bar
+        navBarHeight = self.navigationController?.navigationBar.frame.size.height
         // set game scene
         scene = GameScene(size: skView.frame.size)
         // move to game scene
